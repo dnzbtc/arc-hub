@@ -1,3 +1,9 @@
+"use client";
+
+import WalletButton from "./WalletButton";
+import ProfileCard from "./ProfileCard";
+import TokenCreator from "./TokenCreator";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -11,25 +17,13 @@ export default function Home() {
             Community Toolkit for Arc Network
           </p>
 
-          <button className="mt-8 px-8 py-4 bg-blue-600 rounded-xl">
-            Connect Wallet
-          </button>
+          <div className="mt-8">
+            <WalletButton />
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-zinc-900 rounded-2xl p-6">
-            <h2 className="text-2xl font-bold mb-3">
-              Deploy Token
-            </h2>
-
-            <p className="text-zinc-400 mb-4">
-              Launch your own ERC20 token
-            </p>
-
-            <button className="w-full py-3 bg-blue-600 rounded-xl">
-              Create Token
-            </button>
-          </div>
+          <TokenCreator />
 
           <div className="bg-zinc-900 rounded-2xl p-6">
             <h2 className="text-2xl font-bold mb-3">
@@ -45,19 +39,7 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="bg-zinc-900 rounded-2xl p-6">
-            <h2 className="text-2xl font-bold mb-3">
-              Arc Profile
-            </h2>
-
-            <p className="text-zinc-400 mb-4">
-              Track your activity
-            </p>
-
-            <button className="w-full py-3 bg-green-600 rounded-xl">
-              View Profile
-            </button>
-          </div>
+          <ProfileCard />
         </div>
       </div>
     </main>
