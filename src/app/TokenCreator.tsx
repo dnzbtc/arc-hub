@@ -1,5 +1,5 @@
 "use client";
-
+import ArcToken from "./contracts/ArcToken.json";
 import { useState } from "react";
 import { useAccount, useWalletClient } from "wagmi";
 
@@ -23,12 +23,36 @@ export default function TokenCreator() {
     try {
       setLoading(true);
 
-      const hash = await walletClient.sendTransaction({
-        to: walletClient.account.address,
-        value: 0n,
-      });
+      const hash = await walletClient.deployContract({
+  abi: ArcToken.abi,
+  bytecode: ArcToken.bytecode as `0x${string}`,
+  args: [
+    name,
+    symbol,
+    BigInt(supply)
+  ],
+});
 
-      setTxHash(hash);
+setTxHash(hash);
+localStorage.setItem(
+  "last_token",
+  name
+);
+const currentTxs =
+Number(localStorage.getItem("arc_txs") || "0");
+
+localStorage.setItem(
+  "arc_txs",
+  String(currentTxs + 1)
+);
+
+const currentPoints =
+Number(localStorage.getItem("arc_points") || "0");
+
+localStorage.setItem(
+  "arc_points",
+  String(currentPoints + 100)
+);
     } catch (error) {
       console.error(error);
       alert("Transaction rejected");
