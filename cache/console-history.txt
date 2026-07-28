@@ -1,0 +1,9 @@
+.exit
+await signer.getAddress()
+const [signer] = await ethers.getSigners()
+.exit
+await signer.getAddress()
+const [signer] = await ethers.getSigners()
+.exit
+await signer.getAddress()
+const [signer] = await ethers.getSigners()
